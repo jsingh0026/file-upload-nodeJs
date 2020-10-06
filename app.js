@@ -26,12 +26,12 @@ app.use((req, res, next) => {
     next();
   });
   
-// mongo db connections
-mongoose.connect( process.env.mongoURI, 
-{
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-})
+// // mongo db connections
+// mongoose.connect( process.env.mongoURI, 
+// {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true
+// })
 
 const getTweetData = () => {
   fetch(
@@ -59,8 +59,8 @@ update(bio);
   console.log({ error });
 });
 }
-app.use('/uploads', express.static('uploads'))
-app.use('/members', Members);
+// app.use('/uploads', express.static('uploads'))
+// app.use('/members', Members);
 app.get('/', function (req, res) {
   res.send('Hello World!')
 
