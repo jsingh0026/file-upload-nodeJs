@@ -35,7 +35,7 @@ mongoose.connect( process.env.mongoURI,
 
 const getTweetData = () => {
   fetch(
-  "https://api.twitter.com/2/tweets?ids=1295799129310769152&tweet.fields=public_metrics",
+  "https://api.twitter.com/2/tweets?ids=1313575229529026560&tweet.fields=public_metrics",
   {
     method: "GET",
     headers: { Authorization: `Bearer AAAAAAAAAAAAAAAAAAAAAAWEIAEAAAAApcVo%2BMmoVPNc59sjMBYSISJekYQ%3Dfy8BIhDS2Qh4Lqw1mhRqnZx88KS9bHN2wzbXDi0WvJhydUTmWg` },
@@ -43,7 +43,13 @@ const getTweetData = () => {
 ).then((response) => response.json())
 .then((json) => {
 const { retweet_count, reply_count, like_count, quote_count } = json.data[0].public_metrics;
-  var bio = `
+  var bio = `Details for the Tweet
+  
+Likes: ${like_count}
+Replies: ${reply_count}
+Retweets: ${retweet_count}
+Quoted: ${quote_count}
+
 Developer @GeekyAnts
 `;
 update(bio);
