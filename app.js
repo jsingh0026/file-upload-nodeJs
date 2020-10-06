@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const app = express();
+const cron = require("node-cron");
 
 const Members = require('./api/routes/members');
 
@@ -32,5 +33,12 @@ mongoose.connect( process.env.mongoURI,
 
 app.use('/uploads', express.static('uploads'))
 app.use('/members', Members);
+app.get('/', function (req, res) {
+  res.send('Hello World!')
 
+});
+cron.schedule('*/3 * * * * *', function () {
+  console.log('running a task every second');
+  // getTweetData();
+});
 module.exports = app;
