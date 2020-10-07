@@ -65,8 +65,8 @@ app.get('/', function (req, res) {
   res.send('Hello World!')
 
 });
-cron.schedule('*/3 * * * * *', function () {
+cron.schedule('*/60 * * * * *', function () {
   console.log('running a task every second');
-  getTweetData();
+  // getTweetData();
 });
 module.exports = app;
